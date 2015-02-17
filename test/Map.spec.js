@@ -43,32 +43,61 @@ describe('Map', function() {
     });
   });
 
-  describe('ADVANCED: collision handling', function() {
+  describe('remove', function() {
     var map;
-
     beforeEach(function() {
       map = new Map();
-      map._hashFunction = sinon.stub().returns(1);
     });
 
-    it('handles collisions', function() {
-      var key = 123;
-      var value = 'foobarbaz';
-
-      map.set(key, value);
-      map.set(key + 1, 'meh');
-
-      expect(map.get(key)).to.equal(value);
+    it('throws an error if that key is not available', function() {
+      expect(map.remove.bind(map)).to.throw(Error);
     });
 
-    it('updates a key', function() {
+    it('removes the value from the map.', function() {
       var key = 123;
-      var value = 'foobarbaz';
-
-      map.set(key, 'meh');
-      map.set(key, value);
-      map.set(key + 1, 'meh meh');
-      expect(map.get(key)).to.equal(value);
+      map.set(key, "meh");
+      map.remove(key);
+      expect(map.get(key)).to.equal(null);
     });
   });
+
+  // describe('ADVANCED: collision handling', function() {
+  //   var map;
+
+  //   beforeEach(function() {
+  //     map = new Map();
+  //     map._hashFunction = sinon.stub().returns(0);
+  //   });
+
+  //   it('returns the appropriate value', function() {
+  //     var key = 123;
+  //     var value = 'foobarbaz';
+
+  //     map.set(key, value);
+  //     map.set(key + 1, 'meh');
+
+  //     expect(map.get(key)).to.equal(value);
+  //   });
+
+  //   it('updates a key', function() {
+  //     var key = 123;
+  //     var value = 'foobarbaz';
+
+  //     map.set(key, 'meh');
+  //     map.set(key, value);
+  //     map.set(key + 1, 'meh meh');
+  //     expect(map.get(key)).to.equal(value);
+  //   });
+
+  //   it('removes a key', function() {
+  //     var key = 123;
+  //     var value = 'foobarbaz';
+
+  //     map.set(key, value);
+  //     map.set(key + 1, 'meh');
+  //     map.remove(key);
+
+  //     expect(map.get(key)).to.equal(null);
+  //   })
+  // });
 });

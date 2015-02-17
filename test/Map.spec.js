@@ -61,43 +61,43 @@ describe('Map', function() {
     });
   });
 
-  // describe('ADVANCED: collision handling', function() {
-  //   var map;
+  describe('ADVANCED: collision handling', function() {
+    var map;
 
-  //   beforeEach(function() {
-  //     map = new Map();
-  //     map._hashFunction = sinon.stub().returns(0);
-  //   });
+    beforeEach(function() {
+      map = new Map();
+      map._hashFunction = sinon.stub().returns(0);
+    });
 
-  //   it('returns the appropriate value', function() {
-  //     var key = 123;
-  //     var value = 'foobarbaz';
+    it('returns the appropriate value', function() {
+      var key = 123;
+      var value = 'foobarbaz';
 
-  //     map.set(key, value);
-  //     map.set(key + 1, 'meh');
+      map.set(key, value);
+      map.set(key + 1, 'meh');
 
-  //     expect(map.get(key)).to.equal(value);
-  //   });
+      expect(map.get(key)).to.equal(value);
+    });
 
-  //   it('updates a key', function() {
-  //     var key = 123;
-  //     var value = 'foobarbaz';
+    it('updates a key', function() {
+      var key = 123;
+      var value = 'foobarbaz';
 
-  //     map.set(key, 'meh');
-  //     map.set(key, value);
-  //     map.set(key + 1, 'meh meh');
-  //     expect(map.get(key)).to.equal(value);
-  //   });
+      map.set(key, 'meh');
+      map.set(key, value);
+      map.set(key + 1, 'meh meh');
+      expect(map.get(key)).to.equal(value);
+    });
 
-  //   it('removes a key', function() {
-  //     var key = 123;
-  //     var value = 'foobarbaz';
+    it('removes a key', function() {
+      var key = 123;
+      var value = 'foobarbaz';
 
-  //     map.set(key, value);
-  //     map.set(key + 1, 'meh');
-  //     map.remove(key);
+      map.set(key, value);
+      map.set(key + 1, 'meh');
+      map.remove(key);
 
-  //     expect(map.get(key)).to.equal(null);
-  //   })
-  // });
+      expect(map.get(key)).to.equal(null);
+    })
+  });
 });
